@@ -3,3 +3,9 @@ RewriteCond %{Request_Filename} !-F
 RewriteCond %{Request_Filename} !-d
 RewriteRule ^ index.php [QSA,L]
 
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteBase /
+# RewriteRule ^/$1.php [NC,L]
+

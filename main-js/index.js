@@ -1,21 +1,34 @@
-fetch('http://localhost/store/api/products')
-                .then(response => response.json())//return object as a json text
-                .then(data => console.log(data));//using arrow function inside chained .then()
+// fetch('http://localhost/store/api/products')
+//                 .then(response => response.json())//return object as a json text
+//                 .then(data => console.log(data));//using arrow function inside chained .then()
 
-// const products = Vue.createApp({
-//     data (){
-//         return {
-//             products: []
-//         }
-//     }
-    // methods: {
-    //     getProducts () {
-    //         fetch('http://localhost/store/api/products')
-    //             .then(response => response.json())//return object as a json text
-    //             .then(data => console.log(data));//using arrow function inside chained .then()
-    //     }
-    // },
-    // mounted(){
-    //     this.getProducts
-    // }
-// }).mount("#app")
+
+const app = Vue.createApp({
+    data(){
+        return {
+            product: [],
+            featured: []
+        }
+    },
+    methods:{
+        filterFeatured(){
+                for (key of this.product){
+                    for (item of key){
+                        if (item.sale == 1 || item.featured == 1){
+                            this.featured.push(item)
+                        }
+                    }
+                }
+        },
+        addProducts(data) {
+            this.product.push(data)
+            console.log(this.product)
+            this.filterFeatured()
+        }
+    },
+    beforeCreate (){
+        fetch('http://localhost/store/api/products')
+            .then(response => response.json())//return object as a json text
+            .then(data => this.addProducts(data));//using arrow function inside chained .then()
+    }
+}).mount("#app")

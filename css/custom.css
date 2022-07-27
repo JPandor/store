@@ -1,2 +1,17 @@
+.scrolling-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+}
 
-/** ADD YOUR AWESOME CODES HERE **/
+.scrolling-list img {
+    width: 250px;
+    height: auto;
+}
+
+.card-img {
+    width: 219px;
+    max-height: 260px;
+    min-height: 260px;
+    object-fit: contain;
+}
