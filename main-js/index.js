@@ -22,7 +22,6 @@ const app = Vue.createApp({
         },
         addProducts(data) {
             this.product.push(data)
-            console.log(this.product)
             this.filterFeatured()
         }
     },

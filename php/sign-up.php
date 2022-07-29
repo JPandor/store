@@ -12,7 +12,7 @@ $sql = "INSERT INTO users (name, email, password, security, signed_in)
 VALUES ('$name', '$email', '$password', $security, 0)";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: ../login.html?success");
+    header("Location: ../login.html?signup=success");
   } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 } 

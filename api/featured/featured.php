@@ -9,7 +9,7 @@ $app = new \Slim\App;// We create an object of the Slim framework main app
 
 
 $app->get('/featured', function (Request $request, Response $response, array $args) {
-    require_once 'connect.php';// Calling the database connection file
+    require_once '../connect.php';// Calling the database connection file
 
     $query = "select * from products WHERE sale = 1 OR featured = 1";// SQL query
     $result = $conn->query($query);
