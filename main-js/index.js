@@ -7,7 +7,8 @@ const app = Vue.createApp({
     data(){
         return {
             product: [],
-            featured: []
+            featured: [],
+            url: ""
         }
     },
     methods:{
@@ -23,6 +24,11 @@ const app = Vue.createApp({
         addProducts(data) {
             this.product.push(data)
             this.filterFeatured()
+        },
+        getUrl(query){
+            let starturl = "product-detail.html?";
+            this.url = starturl + query;
+            console.log(this.url)
         }
     },
     beforeCreate (){

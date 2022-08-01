@@ -2318,8 +2318,7 @@
      margin-bottom: 30px;
 }
  .single-product-details ul li{
-     width: 50%;
-     float: left;
+     width: 100%;
      padding: 0px 15px;
 }
  .size-st .bootstrap-select > .dropdown-toggle.btn-light{

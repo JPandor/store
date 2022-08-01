@@ -303,7 +303,7 @@
                                                     <img :src="product.product_image" class="img-fluid card-img" :alt="product.title">
                                                     <div class="mask-icon">
                                                         <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                            <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                         </ul>
                                                         <a class="cart" href="#">Add to Cart</a>
@@ -326,7 +326,7 @@
                                                         <img :src="product.product_image" class="img-fluid card-img" :alt="product.title">
                                                         <div class="mask-icon">
                                                             <ul>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                <li><a href="product-detail.html" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
 
@@ -446,7 +446,8 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="main-js/product-category.js"></script>
+    <!-- <script src="main-js/product-category.js"></script> -->
+    <script src="main-js/products.js"></script>
 </body>
 
 </html>

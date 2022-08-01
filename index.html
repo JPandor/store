@@ -218,7 +218,7 @@
 
             <div class="scrolling-list">
 
-                <ul class="col-lg-3 col-md-6 special-grid best-seller" v-for="product in featured">
+                <ul class="col-lg-3 col-md-6 special-grid best-seller" v-for="product in filterFeatured">
                     <li class="products-single fix">
                         <div class="box-img-hover">
                             <div class="type-lb">
@@ -228,7 +228,7 @@
                             <img :src="product.product_image" class="img-fluid" :alt="product.title">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                 </ul>
                                 <a class="cart" href="#">Add to Cart</a>
@@ -332,7 +332,8 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="main-js/index.js"></script>
+    <!-- <script src="main-js/index.js"></script> -->
+    <script src="main-js/products.js"></script>
 </body>
 
 </html>

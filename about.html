@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+    <title>ThewayShop</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -42,53 +42,21 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="custom-select-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-						<option>¥ JPY</option>
-						<option>$ USD</option>
-						<option>€ EUR</option>
-					</select>
-                    </div>
                     <div class="right-phone-box">
-                        <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                        <p>Call Us :- <a href="tel:+27114321789">+27 11 432 1789</a></p>
                     </div>
                     <div class="our-link">
                         <ul>
-                            <li><a href="#">My Account</a></li>
+                            <!-- <li><a href="#">My Account</a></li> -->
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">My Account</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="login.html" class="text-dark">Log Out</a></li>
+                                    <li><a href="#" class="text-dark">Delete Account</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#">Our location</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="contact-us.html">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -104,9 +72,10 @@
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
@@ -116,74 +85,16 @@
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item active"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="dropdown megamenu-fw">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Product</a>
-                            <ul class="dropdown-menu megamenu-content" role="menu">
-                                <li>
-                                    <div class="row">
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Top</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="shop.html">Jackets</a></li>
-                                                    <li><a href="shop.html">Shirts</a></li>
-                                                    <li><a href="shop.html">Sweaters & Cardigans</a></li>
-                                                    <li><a href="shop.html">T-shirts</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end col-3 -->
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Bottom</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="shop.html">Swimwear</a></li>
-                                                    <li><a href="shop.html">Skirts</a></li>
-                                                    <li><a href="shop.html">Jeans</a></li>
-                                                    <li><a href="shop.html">Trousers</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end col-3 -->
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Clothing</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="shop.html">Top Wear</a></li>
-                                                    <li><a href="shop.html">Party wear</a></li>
-                                                    <li><a href="shop.html">Bottom Wear</a></li>
-                                                    <li><a href="shop.html">Indian Wear</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="col-menu col-md-3">
-                                            <h6 class="title">Accessories</h6>
-                                            <div class="content">
-                                                <ul class="menu-col">
-                                                    <li><a href="shop.html">Bags</a></li>
-                                                    <li><a href="shop.html">Sunglasses</a></li>
-                                                    <li><a href="shop.html">Fragrances</a></li>
-                                                    <li><a href="shop.html">Wallets</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <!-- end col-3 -->
-                                    </div>
-                                    <!-- end row -->
-                                </li>
-                            </ul>
-                        </li>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Shop By Department</a>
                             <ul class="dropdown-menu">
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="shop-detail.html">Shop Detail</a></li>
+                                <li><a href="product-category.html?category=men">Men's Clothing</a></li>
+                                <li><a href="product-category.html?category=women">Women's Clothing</a></li>
+                                <li><a href="product-category.html?category=jewelery">Jewellery</a></li>
+                                <li><a href="product-category.html?category=electronics">Electronics</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="service.html">Our Service</a></li>
+                        <li class="nav-item"><a class="nav-link" href="products.html">Shop All</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -194,9 +105,9 @@
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href="#">
-						<i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-					</a></li>
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                            </a></li>
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
@@ -222,7 +133,7 @@
                             <p>1x - <span class="price">$40.00</span></p>
                         </li>
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
                             <span class="float-right"><strong>Total</strong>: $180.00</span>
                         </li>
                     </ul>
@@ -253,8 +164,8 @@
                 <div class="col-lg-12">
                     <h2>ABOUT US</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">ABOUT US</li>
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">About Us</li>
                     </ul>
                 </div>
             </div>
@@ -267,36 +178,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="noo-sh-title">We are <span>ThewayShop</span></h2>
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
-                        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                        sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
-                        Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </p>
+                    <h2 class="noo-sh-title">Welcome to the <span>ThewayShop</span></h2>
+                    <p>Thewayshop's mission is to be the most customer-centric online shopping destination in Africa, and has built a foundation on the simple concept that the customer comes first.
+
+                    The success of the business is based on its ability to delight customers with amazing customer service. Thewayshop is dedicated to improving the customer experience, from the moment you arrive on the website or app and place an order to when it arrives at your door.
+                    
+                    </p>
+                    <p>The business was initiated with a simple vision in mind: To be the largest, simplest, most customer-centric online shopping destination in Africa. It has rapidly evolved since inception, opening and expanding warehouses in Johannesburg, Durban and Cape Town, while expanding our product section</p>
                 </div>
                 <div class="col-lg-6">
                     <div class="banner-frame"> <img class="img-thumbnail img-fluid" src="images/about-img.jpg" alt="" />
-                    </div>
-                </div>
-            </div>
-            <div class="row my-5">
-                <div class="col-sm-6 col-lg-4">
-                    <div class="service-block-inner">
-                        <h3>We are Trusted</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="service-block-inner">
-                        <h3>We are Professional</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="service-block-inner">
-                        <h3>We are Expert</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                     </div>
                 </div>
             </div>
@@ -306,200 +197,60 @@
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="images/img-1.jpg" alt="" />
+                        <div class="our-team"> <img src="images/fatima.jpg" alt="team member" />
                             <div class="team-content">
-                                <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#" class="fab fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-google-plus"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-youtube"></a>
-                                </li>
-                            </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                                <h3 class="title">Fatima</h3> <span class="post">Founder</span> 
+                            </div>
                         </div>
                         <div class="team-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0"> 
+                    </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="images/img-2.jpg" alt="" />
+                        <div class="our-team"> <img src="images/kenny.jpg"alt="team member" />
                             <div class="team-content">
-                                <h3 class="title">Kristiana</h3> <span class="post">Web Developer</span> </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#" class="fab fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-google-plus"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-youtube"></a>
-                                </li>
-                            </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                                <h3 class="title">Kenny</h3> <span class="post">Web Developer</span> 
+                            </div>
                         </div>
                         <div class="team-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0"> 
+                    </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="images/img-3.jpg" alt="" />
+                        <div class="our-team"> <img src="images/steve.jpg" alt="team member" />
                             <div class="team-content">
-                                <h3 class="title">Steve Thomas</h3> <span class="post">Web Developer</span> </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#" class="fab fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-google-plus"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-youtube"></a>
-                                </li>
-                            </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                                <h3 class="title">Steve</h3> <span class="post">Head Salesman</span> 
+                            </div>
                         </div>
                         <div class="team-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0"> 
+                    </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="hover-team">
-                        <div class="our-team"> <img src="images/img-1.jpg" alt="" />
+                        <div class="our-team"> <img src="images/kristy.jpg" alt="team member" />
                             <div class="team-content">
-                                <h3 class="title">Williamson</h3> <span class="post">Web Developer</span> </div>
-                            <ul class="social">
-                                <li>
-                                    <a href="#" class="fab fa-facebook"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-google-plus"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fab fa-youtube"></a>
-                                </li>
-                            </ul>
-                            <div class="icon"> <i class="fa fa-plus" aria-hidden="true"></i> </div>
+                                <h3 class="title">Kristy</h3> <span class="post">Warehouse Manager</span>
+                            </div>
                         </div>
                         <div class="team-description">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent urna diam, maximus ut ullamcorper quis, placerat id eros. Duis semper justo sed condimentum rutrum. Nunc tristique purus turpis. Maecenas vulputate. </p>
                         </div>
-                        <hr class="my-0"> </div>
+                        <hr class="my-0"> 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- End About Page -->
-
-    <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-01.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-02.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-03.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-04.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-06.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-07.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-08.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-09.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Instagram Feed  -->
-
 
     <!-- Start Footer  -->
     <footer>

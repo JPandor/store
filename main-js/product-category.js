@@ -2,7 +2,8 @@ const app = Vue.createApp({
     data(){
         return {
             products: [],
-            filterCategory: []
+            filterCategory: [],
+            url: ""
         }
     },
     methods:{
@@ -21,14 +22,16 @@ const app = Vue.createApp({
         addProducts(data) {
             this.products.push(data);
             this.filter();
+        },
+        getUrl(query){
+            let starturl = "product-detail.html?";
+            this.url = starturl + query;
+            console.log(this.url)
         }
     },
     beforeCreate (){
         fetch('http://localhost/store/api/products')
             .then(response => response.json())//return object as a json text
             .then(data => this.addProducts(data));//using arrow function inside chained .then()
-    },
-    computed: {
-
     }
 }).mount("#app")
