@@ -19,3 +19,11 @@
 #flex-button {
     gap: 20px;
 }
+
+.price-input{
+    display: inline;
+    border: none;
+    border-bottom: 2px solid black;
+    width: 48%;
+    margin-right: 2%;
+}

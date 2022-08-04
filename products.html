@@ -181,24 +181,15 @@
                     <div class="product-categori">
                         <div class="search-product">
                             <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                                <input class="form-control" placeholder="Filters" type="text">
                             </form>
                         </div>
                         <div class="filter-sidebar-left">
-                            <p>The category is {{ category }}</p>
-                            <p>The category is {{ price }}</p>
                             <div class="title-left">
                                 <h3>Categories</h3>
                             </div>
                             <div class="list-group list-group-collapse list-group-sm list-group-tree"
                                 id="list-group-men" data-children=".sub-men">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="all" id="defaultCheck1" v-model="category">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                        All Categories
-                                    </label>
-                                </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="men" id="defaultCheck1" v-model="category">
                                     <label class="form-check-label" for="defaultCheck1">
@@ -229,36 +220,8 @@
                             <div class="title-left">
                                 <h3>Price</h3>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="all" id="defaultCheck1" v-model="price" @click="filter">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    All
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="cheap" id="defaultCheck1" v-model="price" @click="filter">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    R0.00 - R500.00
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="medium" id="defaultCheck1" v-model="price" @click="filter">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    R501.00 - R2000.00
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="pricey" id="defaultCheck1" v-model="price" @click="filter">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    R2001.00 - R5000.00
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="expensive" id="defaultCheck1" v-model="price" @click="filter">
-                                <label class="form-check-label" for="defaultCheck1">
-                                    R5000 +
-                                </label>
-                            </div>
+                            <input type="number" v-model="priceLow" placeholder="Min" class="price-input">
+                            <input type="number" v-model="priceHigh" placeholder="Max" class="price-input">
                         </div>
         
 
@@ -296,7 +259,7 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                     <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4" v-for="product in products">
+                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4" v-for="product in filters">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <img :src="product.product_image" class="img-fluid card-img" :alt="product.title">
