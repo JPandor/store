@@ -7,7 +7,8 @@ const app = Vue.createApp({
             copy: "",
             category: [],
             priceLow: "0",
-            priceHigh: "15000"
+            priceHigh: "15000",
+            cart: ""
         }
     },
     methods: {
@@ -16,6 +17,10 @@ const app = Vue.createApp({
             this.products = data
             this.copy = data
             console.log(this.copy)
+        },
+        getCart(data) {
+            this.cart = data
+            console.log(this.cart)
         },
         //getting url for single product page with query strings
         getUrl(query) {
@@ -41,14 +46,46 @@ const app = Vue.createApp({
             } else {
                 return error
             }
-        }
+        },
+        addToCart(product, quantity) {
+            if (this.cart.filter(cart => cart.product == product).length > 0) {
 
+            } else {
+                users = sessionStorage.getItem("user")
+                data = {
+                    name: product,
+                    quantity: quantity,
+                    purchased: 0,
+                    user: users
+                }
+                fetch('http://localhost/store/api/addCart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data), //parsing object variable created above
+                })
+            }
+
+
+            this.cartFetch()
+
+        },
+        cartFetch() {
+            fetch('http://localhost/store/api/cart/cart')
+                .then(response => response.json())//return object as a json text
+                .then(data => this.getCart(data));//using arrow function inside chained .then()
+        }
     },
     //fetch api
     beforeCreate() {
         fetch('http://localhost/store/api/products')
             .then(response => response.json())//return object as a json text
             .then(data => this.addProducts(data));//using arrow function inside chained .then()
+
+        fetch('http://localhost/store/api/cart/cart')
+            .then(response => response.json())//return object as a json text
+            .then(data => this.getCart(data));//using arrow function inside chained .then()
     },
     computed: {
         //getting featured products
@@ -59,10 +96,10 @@ const app = Vue.createApp({
         filterCategory() {
             catVal = []
             queryParams = window.location.search.substring(10);
-            if (this.priceHigh > 13000 && this.priceLow == 0){
-                
+            if (this.priceHigh > 13000 && this.priceLow == 0) {
+
                 return this.products.filter(product => product.category == queryParams)
-            }else {
+            } else {
                 catVal = this.products.filter(product => product.category == queryParams)
                 catVal = catVal.filter(product => product.price >= this.priceLow && product.price <= this.priceHigh)
                 return catVal
@@ -79,17 +116,17 @@ const app = Vue.createApp({
         filters() {
             var retVal = [];
             if (this.category.length == 0) {
-                if (this.priceHigh < 13000 || this.priceLow > 0){
+                if (this.priceHigh < 13000 || this.priceLow > 0) {
                     retVal = this.products.filter(product => product.price >= this.priceLow && product.price <= this.priceHigh)
-                }else{
+                } else {
                     retVal = this.products
                 }
             }
             else if (this.category.length > 0) {
-                if (this.priceHigh < 13000 || this.priceLow > 0){
+                if (this.priceHigh < 13000 || this.priceLow > 0) {
                     retVal = this.products.filter(product => this.category.includes(product.category))
                     retVal = retVal.filter(product => product.price >= this.priceLow && product.price <= this.priceHigh)
-                }else{
+                } else {
                     retVal = this.products.filter(product => this.category.includes(product.category))
                 }
             }

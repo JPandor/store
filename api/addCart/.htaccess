@@ -1,4 +1,4 @@
 RewriteEngine On
 RewriteCond %{Request_Filename} !-F
 RewriteCond %{Request_Filename} !-d
-RewriteRule ^ featured.php [QSA,L]
+RewriteRule ^ add-cart.php [QSA,L]

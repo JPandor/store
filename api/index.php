@@ -21,6 +21,7 @@ $app->get('/products', function (Request $request, Response $response, array $ar
     return json_encode($data);// Translate this array into JSON
 });
 
+
 $app->run(); //this ensures that the code runs in Slim
 
 ?>
