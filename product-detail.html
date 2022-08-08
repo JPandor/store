@@ -226,13 +226,13 @@
                                 <li>
                                     <div class="form-group quantity-box">
                                         <label class="control-label">Quantity</label>
-                                        <input class="form-control" value="0" min="0" type="number">
+                                        <input class="form-control" value="0" min="0" type="number" v-model="multipleQuantity">
                                     </div>
                                 </li>
                             </ul>
                             <div class="price-box-bar scrolling-list" id="flex-button">
                                 <div class="cart-and-bay-btn">
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                                    <a class="btn hvr-hover" data-fancybox-close="" @click="addMultipleToCart(product.title)">Add to cart</a>
                                 </div>
                                 <div class="add-comp">
                                     <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>

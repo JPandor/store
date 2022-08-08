@@ -8,16 +8,19 @@ const app = Vue.createApp({
             category: [],
             priceLow: "0",
             priceHigh: "15000",
-            cart: ""
+            cart: "",
+            user: sessionStorage.getItem("user"),
+            multipleQuantity: ""
         }
     },
     methods: {
-        //getting data
+        //getting products
         addProducts(data) {
             this.products = data
             this.copy = data
             console.log(this.copy)
         },
+        //getting cart from api
         getCart(data) {
             this.cart = data
             console.log(this.cart)
@@ -28,6 +31,7 @@ const app = Vue.createApp({
             this.url = starturl + query;
             console.log(this.url)
         },
+        //sorting filter 
         filterSorted() {
             if (this.select == "relevance") {
                 return this.filters
@@ -47,18 +51,32 @@ const app = Vue.createApp({
                 return error
             }
         },
-        addToCart(product, quantity) {
-            if (this.cart.filter(cart => cart.product == product).length > 0) {
+        addToCart(product) {
+            let currentCart = this.displayCart.filter(item => item.product == product)
 
-            } else {
-                users = sessionStorage.getItem("user")
+            //check if product is already in cart and update quantity
+            if (currentCart.length > 0) {
                 data = {
                     name: product,
-                    quantity: quantity,
-                    purchased: 0,
-                    user: users
+                    quantity: parseInt(currentCart[0].quantity) + 1,
+                    users: this.user
                 }
-                fetch('http://localhost/store/api/addCart/add', {
+                fetch('http://localhost/store/api/change-quantity/change', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data), //parsing object variable created above
+                })
+            }else {
+            //adding new item to cart 
+                data = {
+                    name: product,
+                    quantity: 1,
+                    purchased: 0,
+                    users: this.user
+                }
+                fetch('http://localhost/store/api/add-cart/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -66,10 +84,42 @@ const app = Vue.createApp({
                     body: JSON.stringify(data), //parsing object variable created above
                 })
             }
-
-
             this.cartFetch()
 
+        },
+        addMultipleToCart(product, e) {
+            let currentCart = this.displayCart.filter(item => item.product == product)
+
+            //check if product is already in cart and update quantity
+            if (currentCart.length > 0) {
+                data = {
+                    name: product,
+                    quantity: e.target.value,
+                    users: this.user
+                }
+                fetch('http://localhost/store/api/change-quantity/change', {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data), //parsing object variable created above
+                })
+            }else{
+                data = {
+                    name: product,
+                    quantity: this.multipleQuantity,
+                    purchased: 0,
+                    users: this.user
+                }
+                fetch('http://localhost/store/api/add-cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data), //parsing object variable created above
+                })
+            }
+            this.cartFetch()
         },
         cartFetch() {
             fetch('http://localhost/store/api/cart/cart')
@@ -131,6 +181,9 @@ const app = Vue.createApp({
                 }
             }
             return retVal
+        },
+        displayCart() {
+            return this.cart.filter(product => product.email == this.user)
         }
     }
 }).mount("#app")

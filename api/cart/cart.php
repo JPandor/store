@@ -11,7 +11,8 @@ $app = new \Slim\App;// We create an object of the Slim framework main app
 $app->get('/cart', function (Request $request, Response $response, array $args) {
     require_once '../connect.php';// Calling the database connection file
 
-    $query = "select * from cart";// SQL query
+    $query = "SELECT email, cart.product, cart.quantity, cart.purchased, products.product_image, products.price FROM users JOIN cart ON users.id = cart.user_id JOIN products ON cart.product_id = products.id WHERE cart.purchased = 0";
+
     $result = $conn->query($query);
 
     while ($row = $result->fetch_assoc()){// Loop through each field in the library table
