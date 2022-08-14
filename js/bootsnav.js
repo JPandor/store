@@ -199,13 +199,13 @@
             $("nav.navbar.bootsnav .attr-nav").each(function(){  
                 $("li.side-menu > a", this).on("click", function(e){
                     e.preventDefault();
-                    $("nav.navbar.bootsnav > .side").toggleClass("on");
+                    $(".side").toggleClass("on");
                     $("body").toggleClass("on-side");
                 });
             });
-            $(".side .close-side").on("click", function(e){
+            $(".close-side").on("click", function(e){
                 e.preventDefault();
-                $("nav.navbar.bootsnav > .side").removeClass("on");
+                $(".side").removeClass("on");
                 $("body").removeClass("on-side");
             });  
             

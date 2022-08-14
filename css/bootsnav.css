@@ -352,7 +352,7 @@ body.on-side{
 }
 
 .side{
-    position: fixed;
+    position: absolute;
     overflow-y: auto;
     top: 0;
     right: -280px;
@@ -362,10 +362,10 @@ body.on-side{
     display: block;
     background-color: #010101;
     -webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     z-index: 9;
 }
 

@@ -8,13 +8,13 @@ $password = md5($_POST['password']);
 $security = $_POST['security'];
 
 
-$sql = "INSERT INTO users (name, email, password, security, signed_in) 
-VALUES ('$name', '$email', '$password', $security, 0)";
+$sql = "INSERT INTO users (name, email, password, security) 
+VALUES ('$name', '$email', '$password', $security)";
 
 if ($conn->query($sql) === TRUE) {
-    header("Location: ../login.html?signup=success");
+    header("Location: ../login.html?signup=true");
   } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    header("Location: ../error.html");
 } 
 
 ?>

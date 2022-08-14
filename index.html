@@ -52,10 +52,10 @@
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">My Account</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="login.html" class="text-dark">Log Out</a></li>
-                                    <li><a href="#" class="text-dark">Delete Account</a></li>
+                                    <li><a href="delete.html" class="text-dark">Delete Account</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Our location</a></li>
+                            <li><a href="contact-us.html">Our location</a></li>
                             <li><a href="contact-us.html">Contact Us</a></li>
                         </ul>
                     </div>
@@ -65,6 +65,7 @@
     </div>
     <!-- End Main Top -->
 
+
     <!-- Start Main Top -->
     <header class="main-header">
         <!-- Start Navigation -->
@@ -72,13 +73,13 @@
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
                     <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
@@ -102,38 +103,18 @@
                 <!-- Start Atribute Navigation -->
                 <div class="attr-nav">
                     <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#">
-						<i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-					</a></li>
+                        <li class="side-menu">
+                            <a href="#">
+                                <i class="fa fa-shopping-bag"></i>
+                            </a></li>
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
             </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li v-for="item in displayCart.slice(0, 5)">
-                            <a href="#" class="photo"><img :src="item.product_image" class="cart-thumb" :alt="item.product" /></a>
-                            <h6><a href="#">{{item.product}} </a></h6>
-                            <p>{{item.quantity}}x<span class="price">{{item.price * item.quantity}}</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
         </nav>
         <!-- End Navigation -->
     </header>
     <!-- End Main Top -->
-
     <!-- Start Top Search -->
     <div class="top-search">
         <div class="container">
@@ -145,7 +126,6 @@
         </div>
     </div>
     <!-- End Top Search -->
-
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
         <ul class="slides-container">
@@ -156,7 +136,7 @@
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
                             <p class="m-b-40">Thank you for choosing us! We hope you enjoy your experience.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop Now</a></p>
+                            <p><a class="btn hvr-hover" href="products.html">Shop Now</a></p>
                         </div>
                     </div>
                 </div>
@@ -168,7 +148,7 @@
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
                             <p class="m-b-40">Browse our many, many products.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop Now</a></p>
+                            <p><a class="btn hvr-hover" href="products.html">Shop Now</a></p>
                         </div>
                     </div>
                 </div>
@@ -179,8 +159,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
-                            <p class="m-b-40">Enjoy FREE shipping on orders over R400.00</p>
-                            <p><a class="btn hvr-hover" href="#">Shop Now</a></p>
+                            <p class="m-b-40">Enjoy FREE shipping on all orders!</p>
+                            <p><a class="btn hvr-hover" href="products.html">Shop Now</a></p>
                         </div>
                     </div>
                 </div>
@@ -193,9 +173,25 @@
     </div>
     <!-- End Slider -->
 
-
     <!-- Start Products  -->
     <div class="products-box" id="app">
+        <div class="side">
+            <a href="#" class="close-side" @click="closeAside()"><i class="fa fa-times"></i></a>
+            <li class="cart-box">
+                <ul class="cart-list">
+                    <li v-for="item in displayCart.slice(0, 5)">
+                        <a href="#" class="photo"><img :src="item.product_image" class="cart-thumb"
+                                :alt="item.product" /></a>
+                        <h6><a @click="getUrl(item.product)" :href="url">{{item.product}} </a></h6>
+                        <p>{{item.quantity}}x <span class="price">{{item.price}}</span></p>
+                    </li>
+                    <li class="total">
+                        <span class="float-right"><strong>Total</strong>: {{total}}</span>
+                        <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                    </li>
+                </ul>
+            </li>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -205,9 +201,7 @@
                     </div>
                 </div>
             </div>
-
             <div class="scrolling-list">
-
                 <ul class="col-lg-3 col-md-6 special-grid best-seller" v-for="product in filterFeatured">
                     <li class="products-single fix">
                         <div class="box-img-hover">
@@ -218,8 +212,8 @@
                             <img :src="product.product_image" class="img-fluid" :alt="product.title">
                             <div class="mask-icon">
                                 <ul>
-                                    <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                    <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip"
+                                            data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                 </ul>
                                 <a class="cart" @click="addToCart(product.title)">Add to Cart</a>
                             </div>
@@ -230,7 +224,6 @@
                         </div>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>
@@ -245,29 +238,17 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
                             <h4>About ThewayShop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-                            </ul>
+                            <p>Thewayshop's mission is to be the most customer-centric online shopping destination in Africa, and has built a foundation on the simple concept that the customer comes first.
+                            </p>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-link">
                             <h4>Information</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="products.html">Shop All</a></li>
+                                <li><a href="cart">Cart</a></li>
                             </ul>
                         </div>
                     </div>
@@ -276,13 +257,16 @@
                             <h4>Contact Us</h4>
                             <ul>
                                 <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Corner Beyers Naudé Drive and
+                                        Weltevreden Road<br>Cresta Shopping Centre,<br> Blackheath 2118 </p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+27114321789">+27 11 432
+                                            1789</a></p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    <p><i class="fas fa-envelope"></i>Email: <a
+                                            href="mailto:contactinfo@gmail.com">thewayshop@info.co.za</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -296,18 +280,19 @@
     <!-- Start copyright  -->
     <div class="footer-copyright">
         <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-            <a href="https://html.design/">html design</a></p>
+            <a href="https://html.design/">html design</a>
+        </p>
     </div>
     <!-- End copyright  -->
 
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+    <a id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        
+
     </script>
     <!-- ALL PLUGINS -->
     <script src="js/jquery.superslides.min.js"></script>
@@ -322,9 +307,9 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
-    <!-- <script src="main-js/index.js"></script> -->
     <script src="main-js/products.js"></script>
-    <!-- <script src="main-js/cart.js"></script> -->
+    <script src="main-js/logged.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

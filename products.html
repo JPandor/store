@@ -106,40 +106,12 @@
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href="#">
                                 <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
                             </a></li>
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
             </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
+        
         </nav>
         <!-- End Navigation -->
     </header>
@@ -175,6 +147,25 @@
 
     <!-- Start Shop Page  -->
     <div class="shop-box-inner" id="app">
+        <!-- Start Side Menu -->
+        <div class="side">
+            <a href="#" class="close-side" @click="closeAside()"><i class="fa fa-times"></i></a>
+            <li class="cart-box">
+                <ul class="cart-list">
+                    <li v-for="item in displayCart.slice(0, 5)">
+                        <a href="#" class="photo"><img :src="item.product_image" class="cart-thumb"
+                                :alt="item.product" /></a>
+                        <h6><a @click="getUrl(item.product)" :href="url">{{item.product}} </a></h6>
+                        <p>{{item.quantity}}x <span class="price">{{item.price}}</span></p>
+                    </li>
+                    <li class="total">
+                        <span class="float-right"><strong>Total</strong>: {{total}}</span>
+                        <a href="cart.html" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <!-- End Side Menu -->
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
@@ -266,7 +257,6 @@
                                                     <div class="mask-icon">
                                                         <ul>
                                                             <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                         </ul>
                                                         <a class="cart" @click="addToCart(product.title, 1)">Add to Cart</a>
                                                     </div>
@@ -283,7 +273,7 @@
 
                                 <div role="tabpanel" class="tab-pane fade" id="list-view">
                                     <div class="list-view-box">
-                                        <div class="row" v-for="product in products">
+                                        <div class="row" v-for="product in filters">
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
@@ -291,7 +281,6 @@
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a @click="getUrl(product.title)" :href="url" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
 
                                                         </div>
@@ -301,6 +290,7 @@
                                             <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                                 <div class="why-text full-width">
                                                     <h4>{{ product.title }}</h4>
+                                                    <p class="available-stock"><span> {{product.rating}}</span></p>
                                                     <h5>{{ product.price }}</h5>
                                                     <p> {{ product.product_description }}</p>
                                                     <a class="btn hvr-hover" @click="addToCart(product.title, 1)">Add to Cart</a>
@@ -328,31 +318,17 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
                             <h4>About ThewayShop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            <p>Thewayshop's mission is to be the most customer-centric online shopping destination in Africa, and has built a foundation on the simple concept that the customer comes first.
                             </p>
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-                            </ul>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-link">
                             <h4>Information</h4>
                             <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="products.html">Shop All</a></li>
+                                <li><a href="cart">Cart</a></li>
                             </ul>
                         </div>
                     </div>
@@ -361,16 +337,16 @@
                             <h4>Contact Us</h4>
                             <ul>
                                 <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston
-                                        Street Wichita,<br> KS 67213 </p>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Corner Beyers Naudé Drive and
+                                        Weltevreden Road<br>Cresta Shopping Centre,<br> Blackheath 2118 </p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705
-                                            770</a></p>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+27114321789">+27 11 432
+                                            1789</a></p>
                                 </li>
                                 <li>
                                     <p><i class="fas fa-envelope"></i>Email: <a
-                                            href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                            href="mailto:contactinfo@gmail.com">thewayshop@info.co.za</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -411,6 +387,7 @@
     <script src="js/custom.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="main-js/products.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>

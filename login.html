@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h2>Sign In or Sign Up</h2>
+    <div id="alert"></div>
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="php/sign-up.php" method="post">
@@ -27,7 +27,7 @@
                 <h1>Sign in</h1>
                 <input type="email" placeholder="Email" name="email" id="email" required/>
                 <input type="password" placeholder="Password" name="password" required/>
-                <a href="#">Forgot your password?</a>
+                <a href="forgot-password.html">Forgot your password?</a>
                 <button type="submit" onclick="saveEmail()">Sign In</button>
             </form>
         </div>
@@ -48,7 +48,8 @@
     </div>
 
     <script src="js/login.js"></script>
-    <script src="main-js/login.js"></script>
+    <script src="main-js/logged.js"></script>
+    <script src="main-js/alerts.js"></script>
 </body>
 
 </html>

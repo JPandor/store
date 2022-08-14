@@ -11,11 +11,9 @@ include ("../../api/connect.php");
 $sql = "INSERT INTO customer_query (name, subject, message, email) 
 VALUES ('$name', '$subject', '$message', '$email')";
 
-if ($conn->query($sql) === TRUE) {
-  echo "We are halfway there";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-} 
+if ($conn->query($sql) !== TRUE) {
+    header("Location: ../../error.html");
+}
 
 // Import PHPMailer classes into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;

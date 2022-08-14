@@ -51,80 +51,137 @@ const app = Vue.createApp({
                 return error
             }
         },
-        addToCart(product) {
+        async addToCart(product) {
             let currentCart = this.displayCart.filter(item => item.product == product)
 
             //check if product is already in cart and update quantity
             if (currentCart.length > 0) {
-                data = {
+                const data = {
                     name: product,
                     quantity: parseInt(currentCart[0].quantity) + 1,
                     users: this.user
                 }
-                fetch('http://localhost/store/api/change-quantity/change', {
+                await fetch('http://localhost/store/api/change-quantity/change', {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data), //parsing object variable created above
                 })
+                this.cartFetch()
             }else {
             //adding new item to cart 
-                data = {
+                const data = {
                     name: product,
                     quantity: 1,
                     purchased: 0,
                     users: this.user
                 }
-                fetch('http://localhost/store/api/add-cart/add', {
+                await fetch('http://localhost/store/api/add-cart/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data), //parsing object variable created above
                 })
+                this.cartFetch()
             }
-            this.cartFetch()
+            swal({
+                title: "Item added to cart!",
+                icon: "success"
+            })
 
         },
-        addMultipleToCart(product, e) {
+        async addMultipleToCart(product) {
+            let productQuantity = document.getElementById("quantity").value;
+            console.log(productQuantity)
             let currentCart = this.displayCart.filter(item => item.product == product)
+            console.log(currentCart)
 
-            //check if product is already in cart and update quantity
+            // check if product is already in cart and update quantity
             if (currentCart.length > 0) {
-                data = {
+                
+            let newQuantity = parseInt(currentCart[0].quantity) + parseInt(productQuantity)
+                const data = {
                     name: product,
-                    quantity: e.target.value,
+                    quantity: newQuantity,
                     users: this.user
                 }
-                fetch('http://localhost/store/api/change-quantity/change', {
+                await fetch('http://localhost/store/api/change-quantity/change', {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data), //parsing object variable created above
                 })
+                this.cartFetch()
             }else{
-                data = {
+                const data = {
                     name: product,
-                    quantity: this.multipleQuantity,
+                    quantity: productQuantity,
                     purchased: 0,
                     users: this.user
                 }
-                fetch('http://localhost/store/api/add-cart/add', {
+                await fetch('http://localhost/store/api/add-cart/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(data), //parsing object variable created above
                 })
+                this.cartFetch
             }
+            swal({
+                title: "Item added to cart!",
+                icon: "success"
+            })
+
+        },
+        async changeQuantity(product, e){
+            const data = {
+                name: product,
+                quantity: e.target.value,
+                users: this.user
+            }
+            await fetch('http://localhost/store/api/change-quantity/change', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data), //parsing object variable created above
+            })
+            this.cartFetch()
+        },
+        async deleteFromCart(product){
+            const data = {
+                name: product,
+                users: this.user
+            }
+            await fetch('http://localhost/store/api/delete-cart/delete', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+
             this.cartFetch()
         },
         cartFetch() {
             fetch('http://localhost/store/api/cart/cart')
                 .then(response => response.json())//return object as a json text
                 .then(data => this.getCart(data));//using arrow function inside chained .then()
+        },
+        closeAside(){
+            let element = document.getElementsByClassName("side");
+            for (let i = 0; i < element.length; i++) {
+                element[i].classList.remove("on")
+            }
+            let side = document.getElementsByClassName("side");
+            for (let i = 0; i < side.length; i++) {
+                side[i].classList.remove("on-side")
+            }
+              
         }
     },
     //fetch api
@@ -136,6 +193,11 @@ const app = Vue.createApp({
         fetch('http://localhost/store/api/cart/cart')
             .then(response => response.json())//return object as a json text
             .then(data => this.getCart(data));//using arrow function inside chained .then()
+    },
+    beforeMount(){
+        if (sessionStorage.getItem("user") == null){
+            window.location.href="http://localhost/store/login.html"
+        }
     },
     computed: {
         //getting featured products
@@ -157,7 +219,7 @@ const app = Vue.createApp({
         },
         //filtering single product page
         filterProductsByName() {
-            productDetail = window.location.search.substring(1);
+            let productDetail = window.location.search.substring(1);
             productDetail = productDetail.replaceAll('%20', ' ');
             productDetail = productDetail.replaceAll('%27s', "'s");
             console.log(productDetail)
@@ -166,14 +228,14 @@ const app = Vue.createApp({
         filters() {
             var retVal = [];
             if (this.category.length == 0) {
-                if (this.priceHigh < 13000 || this.priceLow > 0) {
+                if (this.priceHigh < 15000 || this.priceLow > 0) {
                     retVal = this.products.filter(product => product.price >= this.priceLow && product.price <= this.priceHigh)
                 } else {
                     retVal = this.products
                 }
             }
             else if (this.category.length > 0) {
-                if (this.priceHigh < 13000 || this.priceLow > 0) {
+                if (this.priceHigh < 15000 || this.priceLow > 0) {
                     retVal = this.products.filter(product => this.category.includes(product.category))
                     retVal = retVal.filter(product => product.price >= this.priceLow && product.price <= this.priceHigh)
                 } else {
@@ -184,6 +246,13 @@ const app = Vue.createApp({
         },
         displayCart() {
             return this.cart.filter(product => product.email == this.user)
+        },
+        total(){
+            return this.displayCart.reduce((currentValue, currentObj) =>{
+                let test = currentObj.price * currentObj.quantity
+                return currentValue + test
+            }, 0).toFixed(2)
         }
     }
 }).mount("#app")
+
