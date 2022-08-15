@@ -25,29 +25,29 @@ const app = Vue.createApp({
             this.cart = data
             console.log(this.cart)
         },
-        //getting url for single product page with query strings
-        getUrl(query) {
-            let starturl = "product-detail.html?";
-            this.url = starturl + query;
-            console.log(this.url)
+        //saving single product to session storage to use in displaying single item
+        singleProduct(query) {
+            sessionStorage.setItem("product" , query)
         },
         //sorting filter 
         filterSorted() {
+            let fil = []
             if (this.select == "relevance") {
                 return this.filters
             } else if (this.select == "high") {
-                this.filters.sort(function (a, b) {
+                fil = this.filters.sort(function (a, b) {
                     return a.price - b.price;
                 }).reverse();
             } else if (this.select == "low") {
-                this.filters.sort(function (a, b) {
+                fil = this.filters.sort(function (a, b) {
                     return a.price - b.price;
                 });
             } else if (this.select == "rating") {
-                this.filters.sort(function (a, b) {
+                fil = this.filters.sort(function (a, b) {
                     return a.rating - b.rating;
                 }).reverse();
             } else {
+                console.log("errrooorr")
                 return error
             }
         },
@@ -209,7 +209,6 @@ const app = Vue.createApp({
             catVal = []
             queryParams = window.location.search.substring(10);
             if (this.priceHigh > 13000 && this.priceLow == 0) {
-
                 return this.products.filter(product => product.category == queryParams)
             } else {
                 catVal = this.products.filter(product => product.category == queryParams)
@@ -219,10 +218,7 @@ const app = Vue.createApp({
         },
         //filtering single product page
         filterProductsByName() {
-            let productDetail = window.location.search.substring(1);
-            productDetail = productDetail.replaceAll('%20', ' ');
-            productDetail = productDetail.replaceAll('%27s', "'s");
-            console.log(productDetail)
+            let productDetail = sessionStorage.getItem("product")
             return this.products.filter(product => product.title == productDetail)
         },
         filters() {

@@ -49,7 +49,7 @@ try {
     $mail->AltBody = "$message";
 
     $mail->send();
-    header("Location: ../../contact-us.html?success");
+    header("Location: ../../contact-us.html?message=true");
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

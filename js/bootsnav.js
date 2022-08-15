@@ -202,13 +202,7 @@
                     $(".side").toggleClass("on");
                     $("body").toggleClass("on-side");
                 });
-            });
-            $(".close-side").on("click", function(e){
-                e.preventDefault();
-                $(".side").removeClass("on");
-                $("body").removeClass("on-side");
-            });  
-            
+            }); 
             
             
             // ------------------------------------------------------------------------------ //

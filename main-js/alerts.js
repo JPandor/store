@@ -1,28 +1,45 @@
 let url = window.location.search.substring(1);
-console.log(url);
+
+const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+const alert = (message, type) => {
+  const wrapper = document.createElement('div')
+  wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    `   <div>${message}</div>`,
+    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+    '</div>'
+  ].join('')
+
+  alertPlaceholder.append(wrapper)
+}
 
 switch(url){
     case "change=true":
-        document.getElementById("alert").innerText = "Your password has successfully been changed!";
-        document.getElementById("alert").style.background = "rgb(62, 136, 91)"
+        alert('Your password has successfully been changed!', 'success')
         break;
     case "delete=true":
-        document.getElementById("alert").innerText = "Your account has been deleted.";
-        document.getElementById("alert").style.background = "rgb(62, 136, 91)"
+        alert('Your account has been deleted.', 'success')
         break;
     case "login=failed":
-        document.getElementById("alert").innerText = "Your email or password is incorrect";
-        document.getElementById("alert").style.background = "rgb(209, 70, 47)"
+        alert('Your email or password is incorrect.', 'danger')
         break;
     case "signup=true":
-        document.getElementById("alert").innerText = "Your account has been created! Please sign in";
-        document.getElementById("alert").style.background = "rgb(62, 136, 91)"
+        alert('Your account has been created! Please sign in.', 'success')
         break;
     case "change=false":
-        document.getElementById("alert").innerText = "Your security question was answered incorrectly";
-        document.getElementById("alert").style.background = "rgb(209, 70, 47)"
+        alert('Your security question was answered incorrectly', 'danger')
         break;
     default:
-        document.getElementById("alert").style.visibility = "hidden";
+        document.getElementById("liveAlertPlaceholder").style.visibility = "hidden";
         break;
+}
+
+function saveEmail (){
+    let email = document.getElementById("email").value
+    sessionStorage.setItem("user", email)
+}
+
+function signOut (){
+    sessionStorage.removeItem("user")
 }

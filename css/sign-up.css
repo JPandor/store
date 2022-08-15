@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,600i,700,700i,800,800i');
+
+body {
+    font-size: 15px;
+    font-family: 'Quattrocento Sans', sans-serif;
+    background-image: url("../images/login-bg.jpg");
+    height: 100%;
+	/* background-size: cover;
+	background-repeat: no-repeat; */
+}
+
+.containers {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    margin: auto;
+    width: 500px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+    padding: 5%;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.button-colour{
+    background-color: #FF4B2B;
+    border: 1px solid #FF4B2B;
+    margin: 2%;
+}
+
+.button-colour:hover{
+    background-color: #FF4B2B;
+    border: 1px solid #FF4B2B;
+}
+
+.heading {
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+@media only screen and (max-width: 500px) {
+    .containers{
+        width: 100%;
+        margin-top: 10% !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .containers{
+        position: static;
+        margin: auto;
+        margin-top: 10% !important;
+    }
+}
