@@ -11,11 +11,15 @@ $app = new \Slim\App;// We create an object of the Slim framework main app
 $app->get('/products', function (Request $request, Response $response, array $args) {
     require_once 'connect.php';// Calling the database connection file
 
-    $query = "select * from products";// SQL query
+    $query = "SELECT title FROM products";// SQL query
     $result = $conn->query($query);
+
 
     while ($row = $result->fetch_assoc()){// Loop through each field in the library table
         $data[] = $row;// Store each field in an array
+        // var_dump ($result->fetch_assoc());
+        // var_dump($row);
+        // die();
     }
     
     return json_encode($data);// Translate this array into JSON

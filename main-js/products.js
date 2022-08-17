@@ -4,7 +4,6 @@ const app = Vue.createApp({
             products: "",
             url: "",
             select: "relevance",
-            copy: "",
             category: [],
             priceLow: "0",
             priceHigh: "15000",
@@ -17,13 +16,10 @@ const app = Vue.createApp({
         //getting products
         addProducts(data) {
             this.products = data
-            this.copy = data
-            console.log(this.copy)
         },
         //getting cart from api
         getCart(data) {
             this.cart = data
-            console.log(this.cart)
         },
         //saving single product to session storage to use in displaying single item
         singleProduct(query) {
@@ -47,10 +43,10 @@ const app = Vue.createApp({
                     return a.rating - b.rating;
                 }).reverse();
             } else {
-                console.log("errrooorr")
                 return error
             }
         },
+        //add single product to cart 
         async addToCart(product) {
             let currentCart = this.displayCart.filter(item => item.product == product)
 
@@ -92,15 +88,13 @@ const app = Vue.createApp({
             })
 
         },
+        //add to cart with specified amount 
         async addMultipleToCart(product) {
             let productQuantity = document.getElementById("quantity").value;
-            console.log(productQuantity)
             let currentCart = this.displayCart.filter(item => item.product == product)
-            console.log(currentCart)
 
             // check if product is already in cart and update quantity
             if (currentCart.length > 0) {
-                
             let newQuantity = parseInt(currentCart[0].quantity) + parseInt(productQuantity)
                 const data = {
                     name: product,
@@ -137,6 +131,7 @@ const app = Vue.createApp({
             })
 
         },
+        //change quantity in cart with api
         async changeQuantity(product, e){
             const data = {
                 name: product,
@@ -152,6 +147,7 @@ const app = Vue.createApp({
             })
             this.cartFetch()
         },
+        //delete from cart with api
         async deleteFromCart(product){
             const data = {
                 name: product,
@@ -167,11 +163,13 @@ const app = Vue.createApp({
 
             this.cartFetch()
         },
+        //cart fetch api
         cartFetch() {
             fetch('http://localhost/store/api/cart/cart')
-                .then(response => response.json())//return object as a json text
-                .then(data => this.getCart(data));//using arrow function inside chained .then()
+                .then(response => response.json())
+                .then(data => this.getCart(data));
         },
+        //closing side cart menu
         closeAside(){
             let element = document.getElementsByClassName("side");
             for (let i = 0; i < element.length; i++) {
@@ -184,16 +182,17 @@ const app = Vue.createApp({
               
         }
     },
-    //fetch api
+    //fetch apis
     beforeCreate() {
         fetch('http://localhost/store/api/products')
-            .then(response => response.json())//return object as a json text
-            .then(data => this.addProducts(data));//using arrow function inside chained .then()
+            .then(response => response.json())
+            .then(data => this.addProducts(data));
 
         fetch('http://localhost/store/api/cart/cart')
-            .then(response => response.json())//return object as a json text
-            .then(data => this.getCart(data));//using arrow function inside chained .then()
+            .then(response => response.json())
+            .then(data => this.getCart(data));
     },
+    //check if user is logged in
     beforeMount(){
         if (sessionStorage.getItem("user") == null){
             window.location.href="http://localhost/store/login.html"
@@ -221,6 +220,7 @@ const app = Vue.createApp({
             let productDetail = sessionStorage.getItem("product")
             return this.products.filter(product => product.title == productDetail)
         },
+        //filtering products on all products
         filters() {
             var retVal = [];
             if (this.category.length == 0) {
@@ -240,9 +240,11 @@ const app = Vue.createApp({
             }
             return retVal
         },
+        //display cart
         displayCart() {
             return this.cart.filter(product => product.email == this.user)
         },
+        //getting total price
         total(){
             return this.displayCart.reduce((currentValue, currentObj) =>{
                 let test = currentObj.price * currentObj.quantity
